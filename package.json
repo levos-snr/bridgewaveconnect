@@ -1,0 +1,62 @@
+{
+  "name": "bridgewaveconnect",
+  "version": "1.0.0",
+  "description": "BridgeWaveConnect: Seamlessly integrate M-Pesa Daraja API & enhance connectivity. Simplify mobile finance development.",
+  "main": "dist/index.js",
+  "module": "dist/index.cjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "test",
+    "build": "tsup",
+    "lint": "tsc",
+    "release": "pnpm run build && changeset publish"
+  },
+  "keywords": [
+    "BridgewaveConnect",
+    "M-Pesa",
+    "Daraja",
+    "API",
+    "Safaricom",
+    "Daraja2.0"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/levos-snr/BridgewaveConnect/issues"
+  },
+  "homepage": "https://github.com/levos-snr/BridgewaveConnect#readme",
+  "type": "module",
+  "author": "Lewis Odero",
+  "license": "MIT",
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-regular-svg-icons": "^6.5.1",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@types/memory-cache": "^0.2.5",
+    "axios": "^1.6.8",
+    "base-64": "^1.0.0",
+    "memory-cache": "^0.2.0",
+    "tailwind-merge": "^2.2.2"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.1",
+    "@types/base-64": "^1.0.2",
+    "@types/node": "^20.11.30",
+    "@types/react": "^18.2.67",
+    "css-loader": "^6.10.0",
+    "postcss-loader": "^8.1.1",
+    "react": "^18.2.0",
+    "style-loader": "^3.3.4",
+    "tailwindcss": "^3.4.1",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.3",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  }
+}
