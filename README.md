@@ -1,6 +1,6 @@
 # Bridgewave Connect
 
-BridgeWaveConnector is a versatile library designed to seamlessly integrate with the M-Pesa Daraja API while offering robust connectivity solutions. Empowering developers with streamlined access to M-Pesa's mobile money services, BridgeWaveConnector serves as the essential bridge between your application and the world of digital transactions.
+Bridgewave Connector is a versatile library designed to seamlessly integrate with the M-Pesa Daraja API while offering robust connectivity solutions. Empowering developers with streamlined access to M-Pesa's mobile money services, BridgeWaveConnector serves as the essential bridge between your application and the world of digital transactions.
 
 ## Table of Contents
 
@@ -12,13 +12,18 @@ BridgeWaveConnector is a versatile library designed to seamlessly integrate with
 
 ## Installation
 
-To install BridgeWaveConnector, you can use npm or yarn:
+To install BridgeWaveConnector, you can use npm , yarn or pnpm:
 
 ```bash
 npm install bridgewaveconnect
-or
+```
+```bash
 yarn add bridgewaveconnect
 ```
+```bash
+pnpm install bridgewaveconnect
+```
+
 
 ## Usage
 
@@ -57,5 +62,5 @@ For detailed usage instructions and API documentation, please refer to the full 
 
 Contributions are welcome! Please feel free to submit issues and pull requests.
 
-License
+## License
 This project is licensed under the MIT License - see the [License](#license) file for details.
