@@ -3,7 +3,7 @@
 .vscode/
 components/
 hooks/
-util/
+utils/
 index.css
 index.ts
 tailwind.config.js
