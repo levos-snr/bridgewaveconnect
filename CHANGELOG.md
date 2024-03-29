@@ -1,5 +1,11 @@
 # BridgewaveConnect
 
+## 1.0.1
+
+### Patch Changes
+
+- 26888ac: publishinisse
+
 ## 1.0.0
 
 ### Major Changes
