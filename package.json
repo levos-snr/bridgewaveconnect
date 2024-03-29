@@ -1,15 +1,18 @@
 {
   "name": "bridgewaveconnect",
-  "version": "2.0.0",
+  "version": "0.0.1",
   "description": "BridgeWaveConnect: Seamlessly integrate M-Pesa Daraja API & enhance connectivity. Simplify mobile finance development.",
-  "main": "dist/index.js",
-  "module": "dist/index.cjs",
-  "types": "dist/index.d.ts",
+  "private": false,
+  "main": ",./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "test": "test",
-    "build": "tsup",
+    "dev": "vitest",
+    "test": "vitest run",
+    "build": "tsup src/index.ts --format cjs,esm --dts",
     "lint": "tsc",
-    "release": "pnpm run build && changeset publish"
+    "release": "pnpm run lint && pnpm run test && pnpm run build && changeset publish",
+    "ci": "pnpm run lint && pnpm run test && pnpm run build"
   },
   "keywords": [
     "BridgewaveConnect",

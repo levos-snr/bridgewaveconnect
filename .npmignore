@@ -4,10 +4,11 @@
 components/
 hooks/
 utils/
-index.css
+global.css
 index.ts
 tailwind.config.js
 tsconfig.json
 types.ts
 src/
 docs-app/
+vite.config.ts
