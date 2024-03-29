@@ -1,6 +1,6 @@
 {
   "name": "bridgewaveconnect",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "BridgeWaveConnect: Seamlessly integrate M-Pesa Daraja API & enhance connectivity. Simplify mobile finance development.",
   "private": false,
   "main": ",./dist/index.js",
