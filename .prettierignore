@@ -1,0 +1,8 @@
+# Ignore list
+./dist
+coverage
+
+# Do not ignore these folders:
+!__tests__/
+!.github/
+!src/

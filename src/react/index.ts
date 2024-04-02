@@ -1,1 +1,1 @@
-export { QrCodeDisplay as QRCodeDisplayReact } from "./QrCodeDisplay";
+export {QrCodeDisplay as QRCodeDisplayReact} from './QrCodeDisplay';

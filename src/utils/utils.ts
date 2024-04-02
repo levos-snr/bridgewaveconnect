@@ -1,4 +1,4 @@
-import { BUSINESS_SHORT_CODE, PASSKEY } from "../env";
+import {BUSINESS_SHORT_CODE, PASSKEY} from '../env';
 
 /**
  * Generates a timestamp in the format of YEAR+MONTH+DATE+HOUR+MINUTE+SECOND (YYYYMMDDHHMMSS).
@@ -7,12 +7,12 @@ import { BUSINESS_SHORT_CODE, PASSKEY } from "../env";
  */
 export function generateTimestamp(): string {
   const now = new Date();
-  const year = now.getFullYear().toString().padStart(4, "0");
-  const month = (now.getMonth() + 1).toString().padStart(2, "0");
-  const date = now.getDate().toString().padStart(2, "0");
-  const hours = now.getHours().toString().padStart(2, "0");
-  const minutes = now.getMinutes().toString().padStart(2, "0");
-  const seconds = now.getSeconds().toString().padStart(2, "0");
+  const year = now.getFullYear().toString().padStart(4, '0');
+  const month = (now.getMonth() + 1).toString().padStart(2, '0');
+  const date = now.getDate().toString().padStart(2, '0');
+  const hours = now.getHours().toString().padStart(2, '0');
+  const minutes = now.getMinutes().toString().padStart(2, '0');
+  const seconds = now.getSeconds().toString().padStart(2, '0');
 
   return `${year}${month}${date}${hours}${minutes}${seconds}`;
 }
@@ -26,9 +26,9 @@ export const generatePassword = (): string => {
   const concatenatedString = `${businessShortCode}${passkey}${timestamp}`;
 
   // Check if the environment is Node.js
-  if (typeof btoa === "undefined") {
+  if (typeof btoa === 'undefined') {
     // Node.js environment
-    const encodedString = Buffer.from(concatenatedString).toString("base64");
+    const encodedString = Buffer.from(concatenatedString).toString('base64');
     return encodedString;
   } else {
     // Browser environment

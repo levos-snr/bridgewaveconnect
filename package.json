@@ -1,17 +1,21 @@
 {
   "name": "bridgewaveconnect",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "BridgeWaveConnect: Seamlessly integrate M-Pesa Daraja API & enhance connectivity. Simplify mobile finance development.",
   "private": false,
-  "main": ",./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.cjs",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "vitest",
-    "test": "vitest run",
-    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "build": "tsup",
     "lint": "tsc",
-    "release": "pnpm run lint && pnpm run build && changeset publish"
+    "release": "pnpm run lint && pnpm run build && changeset publish",
+    "format": "prettier --no-error-on-unmatched-pattern warm --config ./.prettierrc --write \"**/*.{ts,yml,yaml,js,json,tsx}\"",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/levos-snr/bridgewaveconnect.git"
   },
   "keywords": [
     "BridgewaveConnect",
@@ -24,10 +28,13 @@
   "publishConfig": {
     "access": "public"
   },
-  "bugs": {
-    "url": "https://github.com/levos-snr/BridgewaveConnect/issues"
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   },
-  "homepage": "https://github.com/levos-snr/BridgewaveConnect#readme",
+  "bugs": {
+    "url": "https://github.com/levos-snr/bridgewaveconnect/issues"
+  },
+  "homepage": "https://github.com/levos-snr/bridgewaveconnect#readme",
   "type": "module",
   "author": "Lewis Odero",
   "license": "MIT",
@@ -48,7 +55,10 @@
     "@types/node": "^20.11.30",
     "@types/react": "^18.2.67",
     "css-loader": "^6.10.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "postcss-loader": "^8.1.1",
+    "prettier": "3.2.5",
     "react": "^18.2.0",
     "style-loader": "^3.3.4",
     "tailwindcss": "^3.4.1",

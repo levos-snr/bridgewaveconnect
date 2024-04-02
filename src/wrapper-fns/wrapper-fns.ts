@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
+import axios, {AxiosError, AxiosResponse} from 'axios';
 import {
   ScannableQrParamsInternal,
   ScannableQrCodeResponse,
@@ -24,24 +24,24 @@ import {
   BillManagerOptin,
   BillManagerOptInResponse,
   BillManagerSingleInvoicingBody,
-  BillManagerSingleInvoicingResponse,
-} from "../types/types";
-import { generateTimestamp, generatePassword } from "../utils/utils";
-import { generateAccessToken } from "./access-token";
-import { BASE_URL, BUSINESS_SHORT_CODE, PASSKEY } from "../env";
+  BillManagerSingleInvoicingResponse
+} from '../types/types';
+import {generateTimestamp, generatePassword} from '../utils/utils';
+import {generateAccessToken} from './access-token';
+import {BASE_URL, BUSINESS_SHORT_CODE, PASSKEY} from '../env';
 
 export const fetchQrCode = async (
   scannableQrParams: ScannableQrParamsInternal
 ): Promise<ScannableQrCodeResponse> => {
-  const { access_token } = await generateAccessToken();
+  const {access_token} = await generateAccessToken();
   try {
     const res: AxiosResponse<ScannableQrCodeResponse> = await axios.post(
       `${BASE_URL}/mpesa/qrcode/v1/generate`,
       scannableQrParams,
       {
         headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
+          Authorization: `Bearer ${access_token}`
+        }
       }
     );
     return res.data;
@@ -54,24 +54,24 @@ export const fetchQrCode = async (
 
 export type StateOfALNMOnlinePaymentParam = Omit<
   StateOfALNMOnlinePaymentBody,
-  "password"
+  'password'
 >;
 
 export const getStateOfALNMOnlinePayment = async (
   stateOfALNMOnlinePaymentBody: StateOfALNMOnlinePaymentParam
 ): Promise<StateOfALNMOnlinePaymentResponse> => {
-  const { access_token } = await generateAccessToken();
+  const {access_token} = await generateAccessToken();
   const password = generatePassword();
 
   try {
     const res: AxiosResponse<StateOfALNMOnlinePaymentResponse> =
       await axios.post(
         `${BASE_URL}/mpesa/stkpushquery/v1/query`,
-        { ...stateOfALNMOnlinePaymentBody, password },
+        {...stateOfALNMOnlinePaymentBody, password},
         {
           headers: {
-            Authorization: `Bearer ${access_token}`,
-          },
+            Authorization: `Bearer ${access_token}`
+          }
         }
       );
 
@@ -86,19 +86,19 @@ export const getStateOfALNMOnlinePayment = async (
 export const registerC2BUrl = async (
   registerUrlBody: RegisterUrlBody
 ): Promise<RegisterUrlResponse> => {
-  const { access_token } = await generateAccessToken();
+  const {access_token} = await generateAccessToken();
 
   try {
     const res: AxiosResponse<RegisterUrlResponse> = await axios.post(
       `${BASE_URL}/mpesa/c2b/v1/registerurl`,
       {
         ...registerUrlBody,
-        ShortCode: BUSINESS_SHORT_CODE,
+        ShortCode: BUSINESS_SHORT_CODE
       },
       {
         headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
+          Authorization: `Bearer ${access_token}`
+        }
       }
     );
 
@@ -113,7 +113,7 @@ export const registerC2BUrl = async (
 export const b2cPaymentRequest = async (
   b2CBody: B2CRequestBody
 ): Promise<B2CRequestResponse> => {
-  const { access_token } = await generateAccessToken();
+  const {access_token} = await generateAccessToken();
 
   try {
     const res: AxiosResponse<B2CRequestResponse> = await axios.post(
@@ -121,8 +121,8 @@ export const b2cPaymentRequest = async (
       b2CBody,
       {
         headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
+          Authorization: `Bearer ${access_token}`
+        }
       }
     );
     return res.data;
@@ -136,7 +136,7 @@ export const b2cPaymentRequest = async (
 export const b2bPaymentRequest = async (
   body: BusinessRequestBody
 ): Promise<BusinessRequestResponse> => {
-  const { access_token } = await generateAccessToken();
+  const {access_token} = await generateAccessToken();
 
   try {
     const res: AxiosResponse<BusinessRequestResponse> = await axios.post(
@@ -144,8 +144,8 @@ export const b2bPaymentRequest = async (
       body,
       {
         headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
+          Authorization: `Bearer ${access_token}`
+        }
       }
     );
     return res.data;
@@ -159,7 +159,7 @@ export const b2bPaymentRequest = async (
 export const getTransactionStatus = async (
   transactionStatusBody: TransactionStatusBody
 ): Promise<TransactionStatusResponse> => {
-  const { access_token } = await generateAccessToken();
+  const {access_token} = await generateAccessToken();
 
   try {
     const res: AxiosResponse<TransactionStatusResponse> = await axios.post(
@@ -167,8 +167,8 @@ export const getTransactionStatus = async (
       transactionStatusBody,
       {
         headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
+          Authorization: `Bearer ${access_token}`
+        }
       }
     );
     return res.data;
@@ -182,7 +182,7 @@ export const getTransactionStatus = async (
 export const getAccountBalance = async (
   accountBalance: AccountBalanceBody
 ): Promise<AccountBalanceResponse> => {
-  const { access_token } = await generateAccessToken();
+  const {access_token} = await generateAccessToken();
 
   try {
     const res: AxiosResponse<AccountBalanceResponse> = await axios.post(
@@ -190,8 +190,8 @@ export const getAccountBalance = async (
       accountBalance,
       {
         headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
+          Authorization: `Bearer ${access_token}`
+        }
       }
     );
     return res.data;
@@ -205,7 +205,7 @@ export const getAccountBalance = async (
 export const reverseC2BTransaction = async (
   body: ReverseC2BTransactionBody
 ): Promise<ReverseC2BTransactionResponse> => {
-  const { access_token } = await generateAccessToken();
+  const {access_token} = await generateAccessToken();
 
   try {
     const res: AxiosResponse<ReverseC2BTransactionResponse> = await axios.post(
@@ -213,8 +213,8 @@ export const reverseC2BTransaction = async (
       body,
       {
         headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
+          Authorization: `Bearer ${access_token}`
+        }
       }
     );
     return res.data;
@@ -228,7 +228,7 @@ export const reverseC2BTransaction = async (
 export const remitTax = async (
   body: TaxRemittanceBody
 ): Promise<TaxRemittanceResponse> => {
-  const { access_token } = await generateAccessToken();
+  const {access_token} = await generateAccessToken();
 
   try {
     const res: AxiosResponse<TaxRemittanceResponse> = await axios.post(
@@ -236,8 +236,8 @@ export const remitTax = async (
       body,
       {
         headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
+          Authorization: `Bearer ${access_token}`
+        }
       }
     );
     return res.data;
@@ -249,13 +249,13 @@ export const remitTax = async (
 };
 
 export const b2bExpressCheckout = async (data: B2BExpressCheckoutBody) => {
-  const { access_token } = await generateAccessToken();
+  const {access_token} = await generateAccessToken();
 
   try {
     const res = await axios.post(`${BASE_URL}/v1/ussdpush/get-msisdn`, data, {
       headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
+        Authorization: `Bearer ${access_token}`
+      }
     });
 
     return res.data;
@@ -271,15 +271,15 @@ export const b2bExpressCheckout = async (data: B2BExpressCheckoutBody) => {
 export const b2bBuyGoods = async (
   data: B2BBuyGoodsBody
 ): Promise<B2BBuyGoodsResponse> => {
-  const { access_token } = await generateAccessToken();
+  const {access_token} = await generateAccessToken();
   try {
     const res = await axios.post(
       `${BASE_URL}/mpesa/b2b/v1/paymentrequest`,
-      { ...data, PartyA: BUSINESS_SHORT_CODE },
+      {...data, PartyA: BUSINESS_SHORT_CODE},
       {
         headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
+          Authorization: `Bearer ${access_token}`
+        }
       }
     );
 
@@ -302,15 +302,15 @@ export const b2bPayBill = async (
 export const billManagerOptIn = async (
   data: BillManagerOptin
 ): Promise<BillManagerOptInResponse> => {
-  const { access_token } = await generateAccessToken();
+  const {access_token} = await generateAccessToken();
   try {
     const res = await axios.post(
       `${BASE_URL}/v1/billmanager-invoice/optin`,
-      { ...data, PartyA: BUSINESS_SHORT_CODE },
+      {...data, PartyA: BUSINESS_SHORT_CODE},
       {
         headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
+          Authorization: `Bearer ${access_token}`
+        }
       }
     );
 
@@ -327,15 +327,15 @@ export const billManagerOptIn = async (
 export const billManagerSingleInvoicing = async (
   data: BillManagerSingleInvoicingBody
 ): Promise<BillManagerSingleInvoicingResponse> => {
-  const { access_token } = await generateAccessToken();
+  const {access_token} = await generateAccessToken();
   try {
     const res = await axios.post(
       `${BASE_URL}/v1/billmanager-invoice/single-invoicing`,
       data,
       {
         headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
+          Authorization: `Bearer ${access_token}`
+        }
       }
     );
 

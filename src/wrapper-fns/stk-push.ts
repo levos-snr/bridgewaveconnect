@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 import {
   AccountReference,
   Amount,
@@ -7,11 +7,11 @@ import {
   STKPushBody,
   STKPushResponse,
   TransactionDesc,
-  TransactionType,
-} from "../types/types";
-import { generateTimestamp, generatePassword } from "../utils/utils";
-import { BASE_URL, BUSINESS_SHORT_CODE, ENVIRONMENT, PASSKEY } from "../env";
-import { generateAccessToken } from "./access-token";
+  TransactionType
+} from '../types/types';
+import {generateTimestamp, generatePassword} from '../utils/utils';
+import {BASE_URL, BUSINESS_SHORT_CODE, ENVIRONMENT, PASSKEY} from '../env';
+import {generateAccessToken} from './access-token';
 
 export type STKPushRequestParam = {
   phoneNumber: PhoneNumber;
@@ -26,7 +26,7 @@ export const stkPushRequest = async ({
   amount,
   callbackURL,
   transactionDesc,
-  accountReference,
+  accountReference
 }: STKPushRequestParam) => {
   try {
     const timestamp = generateTimestamp();
@@ -40,12 +40,12 @@ export const stkPushRequest = async ({
       Password: password,
       PartyA: phoneNumber,
       PhoneNumber: phoneNumber,
-      Amount: ENVIRONMENT === "production" ? amount : "1",
+      Amount: ENVIRONMENT === 'production' ? amount : '1',
       CallBackURL: callbackURL,
       TransactionDesc: transactionDesc,
       TransactionType: process.env
         .MPESA_TRANSACTION_TYPE as unknown as TransactionType,
-      AccountReference: accountReference,
+      AccountReference: accountReference
     };
 
     const accessTokenResponse = await generateAccessToken();
@@ -55,8 +55,8 @@ export const stkPushRequest = async ({
       stkPushBody,
       {
         headers: {
-          Authorization: `Bearer ${accessTokenResponse.access_token}`,
-        },
+          Authorization: `Bearer ${accessTokenResponse.access_token}`
+        }
       }
     );
 

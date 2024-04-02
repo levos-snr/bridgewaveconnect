@@ -1,21 +1,21 @@
-import { defineConfig } from "tsup";
+import {defineConfig} from 'tsup';
 
 export default defineConfig({
   entry: [
     // included
-    "src",
-    "src/next",
-    "src/react",
+    'src',
+    'src/next',
+    'src/react',
     // not-included
-    "!src/wrapper-fns/**",
-    "!src/types/**",
-    "!/src/utils/**",
+    '!src/wrapper-fns/**',
+    '!src/types/**',
+    '!/src/utils/**'
   ],
   dts: true,
-  format: ["esm", "cjs"],
-  outDir: "dist",
+  format: ['esm', 'cjs'],
+  outDir: 'dist',
   esbuildOptions(options) {
-    options.external = ["react", "axios"];
+    options.external = ['react', 'axios'];
   },
-  external: ["react", "axios"],
+  external: ['react', 'axios']
 });

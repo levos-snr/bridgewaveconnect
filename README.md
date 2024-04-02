@@ -4,11 +4,13 @@ Bridgewave Connector is a versatile library designed to seamlessly integrate wit
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [Contributing](#contributing)
-- [License](#license)
+- [Bridgewave Connect](#bridgewave-connect)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Features](#features)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Installation
 
@@ -17,13 +19,14 @@ To install BridgeWaveConnector, you can use npm , yarn or pnpm:
 ```bash
 npm install bridgewaveconnect
 ```
+
 ```bash
 yarn add bridgewaveconnect
 ```
+
 ```bash
 pnpm install bridgewaveconnect
 ```
-
 
 ## Usage
 
@@ -63,4 +66,5 @@ For detailed usage instructions and API documentation, please refer to the full 
 Contributions are welcome! Please feel free to submit issues and pull requests.
 
 ## License
+
 This project is licensed under the MIT License - see the [License](#license) file for details.

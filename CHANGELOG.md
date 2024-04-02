@@ -1,5 +1,15 @@
 # BridgewaveConnect
 
+## 1.1.0
+
+### Minor Changes
+
+- Added types
+
+### Patch Changes
+
+- 26888ac: publish
+
 ## 1.0.0
 
 ### Major Changes
