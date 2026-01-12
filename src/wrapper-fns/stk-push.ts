@@ -31,7 +31,7 @@ export const stkPushRequest = async ({
   try {
     const timestamp = generateTimestamp();
 
-    const password = generatePassword();
+    const password = generatePassword(timestamp);
 
     const stkPushBody: STKPushBody = {
       BusinessShortCode: BUSINESS_SHORT_CODE!,

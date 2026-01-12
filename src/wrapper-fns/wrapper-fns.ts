@@ -54,20 +54,25 @@ export const fetchQrCode = async (
 
 export type StateOfALNMOnlinePaymentParam = Omit<
   StateOfALNMOnlinePaymentBody,
-  'password'
+  'Password' | 'Timestamp'
 >;
 
 export const getStateOfALNMOnlinePayment = async (
   stateOfALNMOnlinePaymentBody: StateOfALNMOnlinePaymentParam
 ): Promise<StateOfALNMOnlinePaymentResponse> => {
   const {access_token} = await generateAccessToken();
-  const password = generatePassword();
+  const timestamp = generateTimestamp();
+  const Password = generatePassword(timestamp);
 
   try {
     const res: AxiosResponse<StateOfALNMOnlinePaymentResponse> =
       await axios.post(
         `${BASE_URL}/mpesa/stkpushquery/v1/query`,
-        {...stateOfALNMOnlinePaymentBody, password},
+        {
+          ...stateOfALNMOnlinePaymentBody,
+          Password,
+          Timestamp: timestamp
+        },
         {
           headers: {
             Authorization: `Bearer ${access_token}`

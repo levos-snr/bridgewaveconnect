@@ -1,4 +1,5 @@
 import {BUSINESS_SHORT_CODE, PASSKEY} from '../env';
+import crypto from 'node:crypto';
 
 /**
  * Generates a timestamp in the format of YEAR+MONTH+DATE+HOUR+MINUTE+SECOND (YYYYMMDDHHMMSS).
@@ -17,11 +18,13 @@ export function generateTimestamp(): string {
   return `${year}${month}${date}${hours}${minutes}${seconds}`;
 }
 
-export const generatePassword = (): string => {
+/**
+ * Generate the Lipa Na M-Pesa password by base64-encoding Shortcode + Passkey + Timestamp.
+ * Pass the same timestamp used in the request body to avoid mismatches.
+ */
+export const generatePassword = (timestamp: string): string => {
   const businessShortCode = BUSINESS_SHORT_CODE;
   const passkey = PASSKEY;
-
-  const timestamp = generateTimestamp();
 
   const concatenatedString = `${businessShortCode}${passkey}${timestamp}`;
 
@@ -36,3 +39,24 @@ export const generatePassword = (): string => {
     return encodedString;
   }
 };
+
+/**
+ * Generate SecurityCredential by encrypting the initiator password using the M-Pesa X509 public key certificate.
+ * - RSA algorithm
+ * - PKCS#1 v1.5 padding (NOT OAEP)
+ * Returns base64-encoded ciphertext.
+ */
+export function generateSecurityCredential(
+  initiatorPassword: string,
+  mpesaPublicCertPem: string
+): string {
+  const buffer = Buffer.from(initiatorPassword, 'utf8');
+  const encrypted = crypto.publicEncrypt(
+    {
+      key: mpesaPublicCertPem,
+      padding: crypto.constants.RSA_PKCS1_PADDING
+    },
+    buffer
+  );
+  return encrypted.toString('base64');
+}
